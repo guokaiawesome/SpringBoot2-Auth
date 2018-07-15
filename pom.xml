@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.monster</groupId>
-	<artifactId>auth</artifactId>
+	<artifactId>SpringBoot2-Auth</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
