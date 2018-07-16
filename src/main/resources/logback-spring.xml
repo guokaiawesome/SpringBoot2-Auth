@@ -5,7 +5,7 @@
 	<!-- 一些公用的属性，在后面可以直接引用,这里可以根据不同环境引用命令行或者properties文件中传过来的参数制定日志输出路径 -->
 	<!-- 也可以使用springProperty标签，两者工作方式类似 -->
 	<springProperty scope="context" name="appName" source="app_name" defaultValue="myspringboot2"  />
-	<springProperty scope="context" name="appLogPath" source="${app_log_pth}" defaultValue="D:/logs"  />
+	<springProperty scope="context" name="appLogPath" source="app_log_path" defaultValue="D:/logs"  />
 	
 	
 	<property name="LOG_PATH" value="${appLogPath}"/>
