@@ -1,5 +1,6 @@
 package com.monster.auth.controller;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -31,7 +32,7 @@ public class HelloController {
 	 */
 	@GetMapping("/")
 	public CommonResponseResult hello() {
-		SuccessResponseResult ret=new SuccessResponseResult(CommonConstant.SUCCESS, CodeAndMsgEnum.OK.getCode(), CodeAndMsgEnum.OK.getMsg(), "ok", new Date());
+		SuccessResponseResult ret=new SuccessResponseResult(CommonConstant.SUCCESS, CodeAndMsgEnum.OK.getCode(), CodeAndMsgEnum.OK.getMsg(), "ok", LocalDateTime.now());
 		Map<String,Object> data=new HashMap<>();
 		data.put("document", "https://github.com/guokaiawesome/SpringBoot2-Auth");
 		ret.setData(data);

@@ -1,5 +1,6 @@
 package com.monster.auth.controller;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,7 +40,7 @@ public class RbacRoleController {
 		//这个还要改一下，date不要放在构造器里面，以免延后，也可以先放进去，避免因为忘了，后面重新设置一下就可以了
 		FailureResponseResult failRet = new FailureResponseResult(CommonConstant.FAILURE,
 				CodeAndMsgEnum.CLIENT_PARAMETER_ERROR.getCode(), CodeAndMsgEnum.CLIENT_PARAMETER_ERROR.getMsg(),
-				CodeAndMsgEnum.CLIENT_PARAMETER_ERROR.getMsg(), new Date());
+				CodeAndMsgEnum.CLIENT_PARAMETER_ERROR.getMsg(), LocalDateTime.now());
 
 		Map<String, Object> error = new HashMap<>();
 		Map<String, Object> errorParam = new HashMap<>();
@@ -63,7 +64,7 @@ public class RbacRoleController {
 		}
 		
 		SuccessResponseResult successRet = new SuccessResponseResult(CommonConstant.SUCCESS,
-				CodeAndMsgEnum.OK.getCode(), CodeAndMsgEnum.OK.getMsg(), "congratulation", new Date());
+				CodeAndMsgEnum.OK.getCode(), CodeAndMsgEnum.OK.getMsg(), "congratulation", LocalDateTime.now());
 		Map<String, Object> data = new HashMap<>();
 		data.put("record", record);
 		successRet.setData(data);
