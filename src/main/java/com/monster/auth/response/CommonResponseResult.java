@@ -45,7 +45,7 @@ public class CommonResponseResult {
 	 *  JsonFormat一般用于出参绑定
 	 * 看下jdk8，如果有更好的日期类型的话替换掉
 	 */
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	//@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private  LocalDateTime timestamp;
 
 	

@@ -1,0 +1,22 @@
+give  when    then
+
+If you want to focus only on the web layer and not start a complete ApplicationContext, 
+consider using @WebMvcTest instead
+#如果你想仅仅测试web层，而不启动整个环境
+#这个我不太理解，自己测试一下，理论上web层都有依赖，难道这个是测试不依赖service这种情况
+
+#如果你想测试dao、service、controller这些全部
+
+通常，@WebMvcTest仅限于单个控制器，并与其结合使用 @MockBean，为所需的协作者提供模拟实现。
+
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+@AutoConfigureMockMvc
+
+
+@RunWith(SpringRunner.class)
+@WebMvcTest(UserVehicleController.class)
+
+If you need to configure elements of the auto-configuration (for example, when servlet filters should be applied) 
+you can use attributes in the @AutoConfigureMockMvc annotation.

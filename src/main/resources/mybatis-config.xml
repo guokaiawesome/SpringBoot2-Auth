@@ -2,6 +2,8 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
+	<properties></properties>
+
 	<!-- 全局参数 -->
 	<settings>
 		<!-- 使全局的映射器启用或禁用缓存。开启二级缓存     Mybatis的一级缓存是指SqlSession  Mybatis的二级缓存是指mapper映射文件,多个SqlSession共享-->
@@ -38,6 +40,9 @@
 		<setting name="jdbcTypeForNull" value="NULL" />
 
 	</settings>
+	
+	<typeAliases></typeAliases>
+	
 	
 
 </configuration>
