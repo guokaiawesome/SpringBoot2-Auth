@@ -64,4 +64,12 @@ public class RbacRole {
     public void setGmtModified(LocalDateTime gmtModified) {
         this.gmtModified = gmtModified;
     }
+
+	@Override
+	public String toString() {
+		return "RbacRole [id=" + id + ", name=" + name + ", updatePersonId=" + updatePersonId + ", gmtCreate="
+				+ gmtCreate + ", gmtModified=" + gmtModified + "]";
+	}
+    
+    
 }

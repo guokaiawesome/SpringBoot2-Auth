@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import static org.hamcrest.CoreMatchers.*;
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,11 +30,20 @@ public class RbacRoleMapperTest {
 	@Autowired
 	RbacRoleMapper  rbacRoleMapper;
 	
-	RbacRole rbacRole;
+	static RbacRole rbacRole=new RbacRole();
 	
-	@Before
-	public void init() {
-		rbacRole=new RbacRole();
+	//用于测试Junit的构造器
+	public RbacRoleMapperTest() {
+		super();
+		System.out.println("构造新的对象");
+	}
+
+
+	@BeforeClass
+	public static void init() {
+		//用于测试@Before和@BeforeClass
+		System.out.println("test before");
+		System.out.println("record="+rbacRole);
 		rbacRole.setName("2018-07-26");
 		rbacRole.setUpdatePersonId(2L);
 		rbacRole.setGmtCreate(LocalDateTime.now());
@@ -47,8 +56,8 @@ public class RbacRoleMapperTest {
 		System.out.println("---1---");
 		int ret=rbacRoleMapper.insert(rbacRole);
 		Assert.assertThat("mysql affected rows must be one", ret, is(1));
-		Assert.assertNotNull("mysql affected rows must greater than 0", rbacRole.getId());
-		Assert.assertTrue(rbacRole.getId()>0);
+		Assert.assertNotNull("mysql return primaryKey must be not null", rbacRole.getId());
+		Assert.assertTrue("mysql return primaryKey must greater than 0",rbacRole.getId()>0);
 	}
 	
 
@@ -58,7 +67,9 @@ public class RbacRoleMapperTest {
 		System.out.println("---2---");
 		RbacRole record=rbacRoleMapper.selectByPrimaryKey(rbacRole.getId());
 		//junit4官方GitHub用这种方法，第一个参数是断言失败时候的输出信息
-		Assert.assertNotNull("should be not null", record);
+		Assert.assertNotNull("record should be not null", record);
+		/*RbacRole expect=new RbacRole();
+		Assert.assertThat("reason", record, sameInstance(expect));*/
 	}
 	
 	@Test

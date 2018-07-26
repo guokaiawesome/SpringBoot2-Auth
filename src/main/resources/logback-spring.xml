@@ -109,7 +109,7 @@
 	
 	
 	<springProfile name="dev">
-	<logger name="com.monster.demo.mapper" level="DEBUG" additivity="false" />
+		<logger name="com.monster.demo.mapper" level="DEBUG" additivity="false" />
 	
 		<root level="DEBUG">
 			<appender-ref ref="CONSOLE" />
@@ -123,7 +123,9 @@
 	
 	
 	<springProfile name="test">
-		<root level="INFO">
+		<logger name="com.monster.demo.mapper" level="DEBUG" additivity="false" />
+	
+		<root level="DEBUG">
 			<appender-ref ref="CONSOLE" />
 			<appender-ref ref="DEBUG" />
 			<appender-ref ref="INFO" />
@@ -133,6 +135,8 @@
 	</springProfile>
 	
 	<springProfile name="prod">
+		<logger name="com.monster.demo.mapper" level="INFO" additivity="false" />
+	
 		<root level="INFO">
 			<appender-ref ref="CONSOLE" />
 			<appender-ref ref="DEBUG" />
