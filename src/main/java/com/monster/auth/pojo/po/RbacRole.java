@@ -2,8 +2,6 @@ package com.monster.auth.pojo.po;
 
 import java.time.LocalDateTime;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 public class RbacRole {
     private Long id;
 
@@ -11,11 +9,8 @@ public class RbacRole {
 
     private Long updatePersonId;
 
-    //一般用于入参时候绑定，比如dto中,待测试一下
-    //@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime gmtCreate;
 
-    //@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime gmtModified;
 
     public RbacRole(Long id, String name, Long updatePersonId, LocalDateTime gmtCreate, LocalDateTime gmtModified) {
@@ -54,22 +49,19 @@ public class RbacRole {
         this.updatePersonId = updatePersonId;
     }
 
-	public LocalDateTime getGmtCreate() {
-		return gmtCreate;
-	}
+    public LocalDateTime getGmtCreate() {
+        return gmtCreate;
+    }
 
-	public void setGmtCreate(LocalDateTime gmtCreate) {
-		this.gmtCreate = gmtCreate;
-	}
+    public void setGmtCreate(LocalDateTime gmtCreate) {
+        this.gmtCreate = gmtCreate;
+    }
 
-	public LocalDateTime getGmtModified() {
-		return gmtModified;
-	}
+    public LocalDateTime getGmtModified() {
+        return gmtModified;
+    }
 
-	public void setGmtModified(LocalDateTime gmtModified) {
-		this.gmtModified = gmtModified;
-	}
-
-    
- 
+    public void setGmtModified(LocalDateTime gmtModified) {
+        this.gmtModified = gmtModified;
+    }
 }

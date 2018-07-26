@@ -5,17 +5,17 @@
                 
 <generatorConfiguration>  
 	<!-- 这个 要参照自己本地的驱动版本号 -->
-    <classPathEntry  location="C:/Users/guokai/.m2/repository/mysql/mysql-connector-java/5.1.41/mysql-connector-java-5.1.41.jar"/>  
+    <classPathEntry  location="C:/Users/guokai/.m2/repository/mysql/mysql-connector-java/5.1.46/mysql-connector-java-5.1.46.jar"/>  
   
     <context id="DB2Table"  targetRuntime="MyBatis3">  
         <commentGenerator>  
             <property name="suppressDate" value="true"/>  
             <property name="suppressAllComments" value="true"/>  
-            <property name="addRemarkComments" value="true"/>
+            <property name="addRemarkComments" value="false"/>
         </commentGenerator>  
         
   
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.107.131:3306/auth" userId="" password="">  
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.107.132:3306/auth" userId="root" password="guokai123789">  
         </jdbcConnection>  
   
         <javaTypeResolver>  
@@ -39,7 +39,7 @@
             <property name="enableSubPackages" value="true"/>  
         </javaClientGenerator>  
   
-        <table tableName="user_group" domainObjectName="UserGroup"  
+        <table tableName="rbac_role" domainObjectName="RbacRole"  
                enableCountByExample="false"
                enableUpdateByExample="false"  
                enableDeleteByExample="false"  
