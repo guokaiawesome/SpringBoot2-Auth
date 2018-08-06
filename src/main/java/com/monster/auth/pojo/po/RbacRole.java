@@ -9,21 +9,11 @@ public class RbacRole {
 
     private Long updatePersonId;
 
+    private Byte whetherDeleted;
+
     private LocalDateTime gmtCreate;
 
     private LocalDateTime gmtModified;
-
-    public RbacRole(Long id, String name, Long updatePersonId, LocalDateTime gmtCreate, LocalDateTime gmtModified) {
-        this.id = id;
-        this.name = name;
-        this.updatePersonId = updatePersonId;
-        this.gmtCreate = gmtCreate;
-        this.gmtModified = gmtModified;
-    }
-
-    public RbacRole() {
-        super();
-    }
 
     public Long getId() {
         return id;
@@ -49,7 +39,15 @@ public class RbacRole {
         this.updatePersonId = updatePersonId;
     }
 
-    public LocalDateTime getGmtCreate() {
+    public Byte getWhetherDeleted() {
+		return whetherDeleted;
+	}
+
+	public void setWhetherDeleted(Byte whetherDeleted) {
+		this.whetherDeleted = whetherDeleted;
+	}
+
+	public LocalDateTime getGmtCreate() {
         return gmtCreate;
     }
 
@@ -67,8 +65,8 @@ public class RbacRole {
 
 	@Override
 	public String toString() {
-		return "RbacRole [id=" + id + ", name=" + name + ", updatePersonId=" + updatePersonId + ", gmtCreate="
-				+ gmtCreate + ", gmtModified=" + gmtModified + "]";
+		return "RbacRole [id=" + id + ", name=" + name + ", updatePersonId=" + updatePersonId + ", whetherDeleted="
+				+ whetherDeleted + ", gmtCreate=" + gmtCreate + ", gmtModified=" + gmtModified + "]";
 	}
     
     

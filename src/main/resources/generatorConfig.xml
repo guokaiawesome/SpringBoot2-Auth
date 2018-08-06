@@ -15,7 +15,7 @@
         </commentGenerator>  
         
   
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.107.132:3306/auth" userId="" password="">  
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.107.136:3306/auth" userId="root" password="guokai123789">  
         </jdbcConnection>  
   
         <javaTypeResolver>  
@@ -24,7 +24,7 @@
         </javaTypeResolver>  
   
         <javaModelGenerator targetPackage="com.monster.auth.pojo.po" targetProject="src/main/java">  
-            <property name="constructorBased" value="true"/>  
+            <!-- <property name="constructorBased" value="true"/>  --> 
             <property name="enableSubPackages" value="true"/>  
             <property name="immutable" value="false"/>  
             <property name="trimStrings" value="true"/>  
