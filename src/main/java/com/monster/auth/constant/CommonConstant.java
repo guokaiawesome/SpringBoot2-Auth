@@ -19,6 +19,10 @@ public class CommonConstant {
 	 */
 	public static final String FAILURE="failure";
 	
+	public static final String ERROR_PARAMS="error_params";
+	
+	public static final String REQUEST_PARAMS="request_params";
+	
 	
 	
 

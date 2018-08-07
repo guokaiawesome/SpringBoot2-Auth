@@ -1,15 +1,23 @@
 package com.monster.auth.exception;
 
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.fasterxml.jackson.databind.util.BeanUtil;
+import com.monster.auth.constant.CodeAndMsgEnum;
+import com.monster.auth.constant.CommonConstant;
 import com.monster.auth.exception.custom.ResourceNotFoundException;
 import com.monster.auth.response.CommonResponseResult;
 import com.monster.auth.response.FailureResponseResult;
@@ -51,7 +59,15 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(ResourceNotFoundException.class)
 	public FailureResponseResult  handleResourceNotFoundException(ResourceNotFoundException exception,HttpServletRequest request) {
 		FailureResponseResult result =new FailureResponseResult();
-		
+		result.setResult(CommonConstant.FAILURE);
+		result.setCode(CodeAndMsgEnum.RESOUCE_NOT_FOUND.getCode());
+		result.setMsg(CodeAndMsgEnum.RESOUCE_NOT_FOUND.getMsg());
+		result.setSubMsg("未找到请求对应的资源");
+		Map<String,Object> map=new HashMap<>();
+		Map<String, String[]> params=request.getParameterMap();
+		map.put(CommonConstant.REQUEST_PARAMS, params);
+		result.setError(map);
+		result.setTimestamp(LocalDateTime.now());
 		return result;
 	} 
 	

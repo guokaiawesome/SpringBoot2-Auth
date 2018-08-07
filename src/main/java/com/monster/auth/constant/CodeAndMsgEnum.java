@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 /**
  * 
  * @description code和msg成对出现的枚举
+ * 所有的code也可以全部写成200开头后面接上HttpStatus对应的状态，比如200401、200404、200500这种
  * @author guokai
  * @date 2018年7月8日
  * @version v1.0
@@ -27,7 +28,7 @@ public enum CodeAndMsgEnum {
 	/**
 	 * 用在全局异常捕获时候返回，数据库是否存在这条记录的校验一律不准放在controller里面，放在service里面扔出自定义异常
 	 */
-	SERVER_RESULT_NULL(60000,"未查询到对应结果"),
+	RESOUCE_NOT_FOUND(60000,"未查询到对应结果"),
 	/**
 	 * 用在filter里面认证和授权时候返回，或者用于api网关层返回
 	 */

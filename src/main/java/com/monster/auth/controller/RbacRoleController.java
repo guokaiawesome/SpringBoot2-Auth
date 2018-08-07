@@ -55,8 +55,8 @@ public class RbacRoleController {
 		
 		RbacRole record=rbacRoleService.selectByPrimaryKey(id);
 		if(record==null) {
-			failRet.setCode(CodeAndMsgEnum.SERVER_RESULT_NULL.getCode());
-			failRet.setMsg(CodeAndMsgEnum.SERVER_RESULT_NULL.getMsg());
+			failRet.setCode(CodeAndMsgEnum.RESOUCE_NOT_FOUND.getCode());
+			failRet.setMsg(CodeAndMsgEnum.RESOUCE_NOT_FOUND.getMsg());
 			failRet.setSubMsg("未找到对应的记录");
 			errorParam.put("id", id);
 			error.put("resource_not_found", errorParam);
