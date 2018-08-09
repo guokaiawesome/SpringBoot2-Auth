@@ -1,10 +1,14 @@
 package com.monster.auth.config;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import com.monster.auth.interceptor.AccessTokenInterceptor;
 
 /**
  * 
@@ -15,6 +19,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * @date 2018年8月2日
  * @version v1.0
  */
+@Configuration
+@EnableWebMvc
 public class WebMvConfig implements WebMvcConfigurer{
 
 	/**
@@ -22,7 +28,10 @@ public class WebMvConfig implements WebMvcConfigurer{
 	 */
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		// TODO Auto-generated method stub
+		//另外一种WebRequestInterceptor
+		//registry.addWebRequestInterceptor(interceptor);
+		//可以添加多个拦截器
+		registry.addInterceptor(new AccessTokenInterceptor()).addPathPatterns("/**").excludePathPatterns("/admin/**");
 		WebMvcConfigurer.super.addInterceptors(registry);
 	}
 
@@ -39,11 +48,35 @@ public class WebMvConfig implements WebMvcConfigurer{
 	}
 
 	/**
-	 * 添加自定义Cors策略，关于Cors也通过通过注解
+	 * 添加自定义Cors策略，关于Cors也通过通过注解，还可以通过内置CorsFilter
+	 * 以下写法参照Spring FrameWork5.1.0写法
 	 */
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
-		// TODO Auto-generated method stub
+		
+		//这里如果有必要可以读数据库，从数据库中读出允许访问的域名
+		String[] allow= {"http://172.0.0.1","developer.monster.com"};
+		
+		//以下来自官方写法
+/*		registry.addMapping("/api/**")
+		.allowedOrigins(allow)
+		.allowedMethods("PUT","DELETE")
+		.allowedHeaders("a","b")
+		.exposedHeaders("d")
+		.allowCredentials(true)
+		.maxAge(3600);*/
+		
+		//关于时间，官方英文意思是客户端可以缓存的上一次响应的时间
+		//关于Credential，官方英文意思是是否支持用户证书，还是不是很理解
+		registry.addMapping("/api/**")
+		.allowedOrigins(allow)
+		.allowedMethods("*")
+		.allowedHeaders("*")
+		.allowCredentials(true)
+		.maxAge(3600);
+		
+		// Add more mappings...
+		
 		WebMvcConfigurer.super.addCorsMappings(registry);
 	}
 
