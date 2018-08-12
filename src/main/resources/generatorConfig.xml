@@ -15,7 +15,7 @@
         </commentGenerator>  
         
   
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.107.136:3306/auth" userId="" password="">  
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.107.139:3306/auth" userId="root" password="guokai123789">  
         </jdbcConnection>  
   
         <javaTypeResolver>  
@@ -27,7 +27,7 @@
             <!-- <property name="constructorBased" value="true"/>  --> 
             <property name="enableSubPackages" value="true"/>  
             <property name="immutable" value="false"/>  
-            <property name="trimStrings" value="true"/>  
+            <!-- <property name="trimStrings" value="true"/> -->  
         </javaModelGenerator>  
   
         <!-- 生成映射文件的包名和位置-->  
@@ -39,7 +39,7 @@
             <property name="enableSubPackages" value="true"/>  
         </javaClientGenerator>  
   
-        <table tableName="rbac_role" domainObjectName="RbacRole"  
+        <table tableName="oauth2_client_info" domainObjectName="Oauth2ClientInfo"  
                enableCountByExample="false"
                enableUpdateByExample="false"  
                enableDeleteByExample="false"  
