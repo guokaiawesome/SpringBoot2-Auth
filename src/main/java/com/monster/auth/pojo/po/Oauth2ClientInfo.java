@@ -82,4 +82,13 @@ public class Oauth2ClientInfo {
     public void setGmtModified(LocalDateTime gmtModified) {
         this.gmtModified = gmtModified;
     }
+
+	@Override
+	public String toString() {
+		return "Oauth2ClientInfo [id=" + id + ", uid=" + uid + ", clientId=" + clientId + ", clientSecret="
+				+ clientSecret + ", whetherFrozen=" + whetherFrozen + ", whetherDeleted=" + whetherDeleted
+				+ ", gmtCreate=" + gmtCreate + ", gmtModified=" + gmtModified + "]";
+	}
+    
+    
 }

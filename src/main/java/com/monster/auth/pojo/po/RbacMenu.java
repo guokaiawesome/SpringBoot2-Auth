@@ -62,4 +62,12 @@ public class RbacMenu {
     public void setGmtModified(LocalDateTime gmtModified) {
         this.gmtModified = gmtModified;
     }
+
+	@Override
+	public String toString() {
+		return "RbacMenu [id=" + id + ", name=" + name + ", updatePersonId=" + updatePersonId + ", whetherDeleted="
+				+ whetherDeleted + ", gmtCreate=" + gmtCreate + ", gmtModified=" + gmtModified + "]";
+	}
+    
+    
 }

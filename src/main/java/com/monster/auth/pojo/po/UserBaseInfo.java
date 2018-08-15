@@ -92,4 +92,13 @@ public class UserBaseInfo {
     public void setGmtModified(LocalDateTime gmtModified) {
         this.gmtModified = gmtModified;
     }
+
+	@Override
+	public String toString() {
+		return "UserBaseInfo [id=" + id + ", uid=" + uid + ", realName=" + realName + ", nickName=" + nickName
+				+ ", state=" + state + ", whetherFrozen=" + whetherFrozen + ", whetherDeleted=" + whetherDeleted
+				+ ", gmtCreate=" + gmtCreate + ", gmtModified=" + gmtModified + "]";
+	}
+    
+    
 }

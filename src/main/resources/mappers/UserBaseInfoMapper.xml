@@ -33,7 +33,7 @@
       state, is_frozen, is_deleted, 
       gmt_create, gmt_modified)
     values (#{uid,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
-      #{state,jdbcType=TINYINT}, #{isFrozen,jdbcType=TINYINT}, #{isDeleted,jdbcType=TINYINT}, 
+      #{state,jdbcType=TINYINT}, #{whetherFrozen,jdbcType=TINYINT}, #{whetherDeleted,jdbcType=TINYINT}, 
       #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.monster.auth.pojo.po.UserBaseInfo">
@@ -54,10 +54,10 @@
       <if test="state != null">
         state,
       </if>
-      <if test="isFrozen != null">
+      <if test="whetherFrozen != null">
         is_frozen,
       </if>
-      <if test="isDeleted != null">
+      <if test="whetherDeleted != null">
         is_deleted,
       </if>
       <if test="gmtCreate != null">
@@ -80,11 +80,11 @@
       <if test="state != null">
         #{state,jdbcType=TINYINT},
       </if>
-      <if test="isFrozen != null">
-        #{isFrozen,jdbcType=TINYINT},
+      <if test="whetherFrozen != null">
+        #{whetherFrozen,jdbcType=TINYINT},
       </if>
-      <if test="isDeleted != null">
-        #{isDeleted,jdbcType=TINYINT},
+      <if test="whetherDeleted != null">
+        #{whetherDeleted,jdbcType=TINYINT},
       </if>
       <if test="gmtCreate != null">
         #{gmtCreate,jdbcType=TIMESTAMP},
@@ -109,11 +109,11 @@
       <if test="state != null">
         state = #{state,jdbcType=TINYINT},
       </if>
-      <if test="isFrozen != null">
-        is_frozen = #{isFrozen,jdbcType=TINYINT},
+      <if test="whetherFrozen != null">
+        is_frozen = #{whetherFrozen,jdbcType=TINYINT},
       </if>
-      <if test="isDeleted != null">
-        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      <if test="whetherDeleted != null">
+        is_deleted = #{whetherDeleted,jdbcType=TINYINT},
       </if>
       <if test="gmtCreate != null">
         gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
@@ -130,8 +130,8 @@
       real_name = #{realName,jdbcType=VARCHAR},
       nick_name = #{nickName,jdbcType=VARCHAR},
       state = #{state,jdbcType=TINYINT},
-      is_frozen = #{isFrozen,jdbcType=TINYINT},
-      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      is_frozen = #{whetherFrozen,jdbcType=TINYINT},
+      is_deleted = #{whetherDeleted,jdbcType=TINYINT},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}

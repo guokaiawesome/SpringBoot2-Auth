@@ -28,7 +28,7 @@
     </selectKey>
     insert into rbac_role_group (role_id, group_id, is_deleted, 
       gmt_create, gmt_modified)
-    values (#{roleId,jdbcType=BIGINT}, #{groupId,jdbcType=BIGINT}, #{isDeleted,jdbcType=TINYINT}, 
+    values (#{roleId,jdbcType=BIGINT}, #{groupId,jdbcType=BIGINT}, #{whetherDeleted,jdbcType=TINYINT}, 
       #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.monster.auth.pojo.po.RbacRoleGroup">
@@ -43,7 +43,7 @@
       <if test="groupId != null">
         group_id,
       </if>
-      <if test="isDeleted != null">
+      <if test="whetherDeleted != null">
         is_deleted,
       </if>
       <if test="gmtCreate != null">
@@ -60,8 +60,8 @@
       <if test="groupId != null">
         #{groupId,jdbcType=BIGINT},
       </if>
-      <if test="isDeleted != null">
-        #{isDeleted,jdbcType=TINYINT},
+      <if test="whetherDeleted != null">
+        #{whetherDeleted,jdbcType=TINYINT},
       </if>
       <if test="gmtCreate != null">
         #{gmtCreate,jdbcType=TIMESTAMP},
@@ -80,8 +80,8 @@
       <if test="groupId != null">
         group_id = #{groupId,jdbcType=BIGINT},
       </if>
-      <if test="isDeleted != null">
-        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      <if test="whetherDeleted != null">
+        is_deleted = #{whetherDeleted,jdbcType=TINYINT},
       </if>
       <if test="gmtCreate != null">
         gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
@@ -96,7 +96,7 @@
     update rbac_role_group
     set role_id = #{roleId,jdbcType=BIGINT},
       group_id = #{groupId,jdbcType=BIGINT},
-      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      is_deleted = #{whetherDeleted,jdbcType=TINYINT},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}

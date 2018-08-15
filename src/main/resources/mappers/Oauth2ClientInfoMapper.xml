@@ -32,7 +32,7 @@
       is_frozen, is_deleted, gmt_create, 
       gmt_modified)
     values (#{uid,jdbcType=VARCHAR}, #{clientId,jdbcType=VARCHAR}, #{clientSecret,jdbcType=VARCHAR}, 
-      #{isFrozen,jdbcType=TINYINT}, #{isDeleted,jdbcType=TINYINT}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{whetherFrozen,jdbcType=TINYINT}, #{whetherDeleted,jdbcType=TINYINT}, #{gmtCreate,jdbcType=TIMESTAMP}, 
       #{gmtModified,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.monster.auth.pojo.po.Oauth2ClientInfo">
@@ -50,10 +50,10 @@
       <if test="clientSecret != null">
         client_secret,
       </if>
-      <if test="isFrozen != null">
+      <if test="whetherFrozen != null">
         is_frozen,
       </if>
-      <if test="isDeleted != null">
+      <if test="whetherDeleted != null">
         is_deleted,
       </if>
       <if test="gmtCreate != null">
@@ -73,11 +73,11 @@
       <if test="clientSecret != null">
         #{clientSecret,jdbcType=VARCHAR},
       </if>
-      <if test="isFrozen != null">
-        #{isFrozen,jdbcType=TINYINT},
+      <if test="whetherFrozen != null">
+        #{whetherFrozen,jdbcType=TINYINT},
       </if>
-      <if test="isDeleted != null">
-        #{isDeleted,jdbcType=TINYINT},
+      <if test="whetherDeleted != null">
+        #{whetherDeleted,jdbcType=TINYINT},
       </if>
       <if test="gmtCreate != null">
         #{gmtCreate,jdbcType=TIMESTAMP},
@@ -99,11 +99,11 @@
       <if test="clientSecret != null">
         client_secret = #{clientSecret,jdbcType=VARCHAR},
       </if>
-      <if test="isFrozen != null">
-        is_frozen = #{isFrozen,jdbcType=TINYINT},
+      <if test="whetherFrozen != null">
+        is_frozen = #{whetherFrozen,jdbcType=TINYINT},
       </if>
-      <if test="isDeleted != null">
-        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      <if test="whetherDeleted != null">
+        is_deleted = #{whetherDeleted,jdbcType=TINYINT},
       </if>
       <if test="gmtCreate != null">
         gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
@@ -119,8 +119,8 @@
     set uid = #{uid,jdbcType=VARCHAR},
       client_id = #{clientId,jdbcType=VARCHAR},
       client_secret = #{clientSecret,jdbcType=VARCHAR},
-      is_frozen = #{isFrozen,jdbcType=TINYINT},
-      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      is_frozen = #{whetherFrozen,jdbcType=TINYINT},
+      is_deleted = #{whetherDeleted,jdbcType=TINYINT},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}

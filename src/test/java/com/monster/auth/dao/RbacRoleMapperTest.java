@@ -17,7 +17,7 @@ import com.monster.auth.pojo.po.RbacRole;
 
 /**
  * 
- * @description 单元测试
+ * @description RBAC中的角色相关单元测试
  * @author guokai
  * @date 2018年7月23日
  * @version v1.0
@@ -114,6 +114,21 @@ public class RbacRoleMapperTest {
 
 	}
 	
+	@Test
+	public void test07SelectByPrimaryKey() {
+		System.out.println("---7---");
+		
+		RbacRole record=rbacRoleMapper.selectByPrimaryKey(rbacRole.getId());
+		//junit4官方GitHub用这种方法，第一个参数是断言失败时候的输出信息
+		Assert.assertNotNull("record should be not null", record);
+	}
 	
+	@Test
+	public void test08DeleteByPrimaryKey() {
+		System.out.println("---8---");
+		
+		int ret=rbacRoleMapper.deleteByPrimaryKey(rbacRole.getId());
+		Assert.assertThat("mysql affected rows must be one", ret, is(1));
+	}
 
 }

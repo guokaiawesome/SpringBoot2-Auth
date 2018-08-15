@@ -32,7 +32,7 @@
       update_person_id, is_deleted, gmt_create, 
       gmt_modified)
     values (#{category,jdbcType=VARCHAR}, #{uri,jdbcType=VARCHAR}, #{httpVerb,jdbcType=VARCHAR}, 
-      #{updatePersonId,jdbcType=BIGINT}, #{isDeleted,jdbcType=TINYINT}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{updatePersonId,jdbcType=BIGINT}, #{whetherDeleted,jdbcType=TINYINT}, #{gmtCreate,jdbcType=TIMESTAMP}, 
       #{gmtModified,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.monster.auth.pojo.po.RbacResource">
@@ -53,7 +53,7 @@
       <if test="updatePersonId != null">
         update_person_id,
       </if>
-      <if test="isDeleted != null">
+      <if test="whetherDeleted != null">
         is_deleted,
       </if>
       <if test="gmtCreate != null">
@@ -76,8 +76,8 @@
       <if test="updatePersonId != null">
         #{updatePersonId,jdbcType=BIGINT},
       </if>
-      <if test="isDeleted != null">
-        #{isDeleted,jdbcType=TINYINT},
+      <if test="whetherDeleted != null">
+        #{whetherDeleted,jdbcType=TINYINT},
       </if>
       <if test="gmtCreate != null">
         #{gmtCreate,jdbcType=TIMESTAMP},
@@ -102,8 +102,8 @@
       <if test="updatePersonId != null">
         update_person_id = #{updatePersonId,jdbcType=BIGINT},
       </if>
-      <if test="isDeleted != null">
-        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      <if test="whetherDeleted != null">
+        is_deleted = #{whetherDeleted,jdbcType=TINYINT},
       </if>
       <if test="gmtCreate != null">
         gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
@@ -120,7 +120,7 @@
       uri = #{uri,jdbcType=VARCHAR},
       http_verb = #{httpVerb,jdbcType=VARCHAR},
       update_person_id = #{updatePersonId,jdbcType=BIGINT},
-      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      is_deleted = #{whetherDeleted,jdbcType=TINYINT},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}

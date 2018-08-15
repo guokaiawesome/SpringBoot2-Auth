@@ -82,4 +82,13 @@ public class RbacResource {
     public void setGmtModified(LocalDateTime gmtModified) {
         this.gmtModified = gmtModified;
     }
+
+	@Override
+	public String toString() {
+		return "RbacResource [id=" + id + ", category=" + category + ", uri=" + uri + ", httpVerb=" + httpVerb
+				+ ", updatePersonId=" + updatePersonId + ", whetherDeleted=" + whetherDeleted + ", gmtCreate="
+				+ gmtCreate + ", gmtModified=" + gmtModified + "]";
+	}
+    
+    
 }

@@ -72,4 +72,13 @@ public class RbacUserGroup {
     public void setGmtModified(LocalDateTime gmtModified) {
         this.gmtModified = gmtModified;
     }
+
+	@Override
+	public String toString() {
+		return "RbacUserGroup [id=" + id + ", groupId=" + groupId + ", userId=" + userId + ", updatePersonId="
+				+ updatePersonId + ", whetherDeleted=" + whetherDeleted + ", gmtCreate=" + gmtCreate + ", gmtModified="
+				+ gmtModified + "]";
+	}
+    
+    
 }
