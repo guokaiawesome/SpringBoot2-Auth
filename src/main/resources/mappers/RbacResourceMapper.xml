@@ -3,6 +3,7 @@
 <mapper namespace="com.monster.auth.dao.RbacResourceMapper">
   <resultMap id="BaseResultMap" type="com.monster.auth.pojo.po.RbacResource">
     <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="category" jdbcType="VARCHAR" property="category" />
     <result column="uri" jdbcType="VARCHAR" property="uri" />
     <result column="http_verb" jdbcType="VARCHAR" property="httpVerb" />
@@ -12,7 +13,7 @@
     <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, category, uri, http_verb, update_person_id, is_deleted, gmt_create, gmt_modified
+    id, name, category, uri, http_verb, update_person_id, is_deleted, gmt_create, gmt_modified
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -28,10 +29,10 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into rbac_resource (category, uri, http_verb, 
+    insert into rbac_resource (name,category, uri, http_verb, 
       update_person_id, is_deleted, gmt_create, 
       gmt_modified)
-    values (#{category,jdbcType=VARCHAR}, #{uri,jdbcType=VARCHAR}, #{httpVerb,jdbcType=VARCHAR}, 
+    values (#{name,jdbcType=VARCHAR},#{category,jdbcType=VARCHAR}, #{uri,jdbcType=VARCHAR}, #{httpVerb,jdbcType=VARCHAR}, 
       #{updatePersonId,jdbcType=BIGINT}, #{whetherDeleted,jdbcType=TINYINT}, #{gmtCreate,jdbcType=TIMESTAMP}, 
       #{gmtModified,jdbcType=TIMESTAMP})
   </insert>
@@ -41,6 +42,9 @@
     </selectKey>
     insert into rbac_resource
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
       <if test="category != null">
         category,
       </if>
@@ -64,6 +68,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
       <if test="category != null">
         #{category,jdbcType=VARCHAR},
       </if>
@@ -90,6 +97,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.monster.auth.pojo.po.RbacResource">
     update rbac_resource
     <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
       <if test="category != null">
         category = #{category,jdbcType=VARCHAR},
       </if>
@@ -116,7 +126,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.monster.auth.pojo.po.RbacResource">
     update rbac_resource
-    set category = #{category,jdbcType=VARCHAR},
+    set name = #{name,jdbcType=VARCHAR},
+      category = #{category,jdbcType=VARCHAR},
       uri = #{uri,jdbcType=VARCHAR},
       http_verb = #{httpVerb,jdbcType=VARCHAR},
       update_person_id = #{updatePersonId,jdbcType=BIGINT},

@@ -9,11 +9,12 @@
     <result column="state" jdbcType="TINYINT" property="state" />
     <result column="is_frozen" jdbcType="TINYINT" property="whetherFrozen" />
     <result column="is_deleted" jdbcType="TINYINT" property="whetherDeleted" />
+    <result column="is_internal_test" jdbcType="TINYINT" property="whetherInternalTest" />
     <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
     <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, uid, real_name, nick_name, state, is_frozen, is_deleted, gmt_create, gmt_modified
+    id, uid, real_name, nick_name, state, is_frozen, is_deleted, is_internal_test, gmt_create, gmt_modified
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -30,10 +31,10 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into user_base_info (uid, real_name, nick_name, 
-      state, is_frozen, is_deleted, 
+      state, is_frozen, is_deleted, is_internal_test,
       gmt_create, gmt_modified)
     values (#{uid,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
-      #{state,jdbcType=TINYINT}, #{whetherFrozen,jdbcType=TINYINT}, #{whetherDeleted,jdbcType=TINYINT}, 
+      #{state,jdbcType=TINYINT}, #{whetherFrozen,jdbcType=TINYINT}, #{whetherDeleted,jdbcType=TINYINT},#{whetherInternalTest,jdbcType=TINYINT}, 
       #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.monster.auth.pojo.po.UserBaseInfo">
@@ -60,6 +61,9 @@
       <if test="whetherDeleted != null">
         is_deleted,
       </if>
+      <if test="whetherInternalTest != null">
+        is_internal_test,
+      </if>
       <if test="gmtCreate != null">
         gmt_create,
       </if>
@@ -85,6 +89,9 @@
       </if>
       <if test="whetherDeleted != null">
         #{whetherDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="whetherInternalTest != null">
+        #{whetherInternalTest,jdbcType=TINYINT},
       </if>
       <if test="gmtCreate != null">
         #{gmtCreate,jdbcType=TIMESTAMP},
@@ -115,6 +122,9 @@
       <if test="whetherDeleted != null">
         is_deleted = #{whetherDeleted,jdbcType=TINYINT},
       </if>
+      <if test="whetherInternalTest != null">
+        is_internal_test = #{whetherInternalTest,jdbcType=TINYINT},
+      </if>
       <if test="gmtCreate != null">
         gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       </if>
@@ -132,6 +142,7 @@
       state = #{state,jdbcType=TINYINT},
       is_frozen = #{whetherFrozen,jdbcType=TINYINT},
       is_deleted = #{whetherDeleted,jdbcType=TINYINT},
+      is_internal_test = #{whetherInternalTest,jdbcType=TINYINT},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}

@@ -16,6 +16,8 @@ public class UserBaseInfo {
     private Byte whetherFrozen;
 
     private Byte whetherDeleted;
+    
+    private Byte whetherInternalTest;
 
     private LocalDateTime gmtCreate;
 
@@ -76,6 +78,14 @@ public class UserBaseInfo {
 	public void setWhetherDeleted(Byte whetherDeleted) {
 		this.whetherDeleted = whetherDeleted;
 	}
+	
+	public Byte getWhetherInternalTest() {
+		return whetherInternalTest;
+	}
+
+	public void setWhetherInternalTest(Byte whetherInternalTest) {
+		this.whetherInternalTest = whetherInternalTest;
+	}
 
 	public LocalDateTime getGmtCreate() {
         return gmtCreate;
@@ -97,8 +107,12 @@ public class UserBaseInfo {
 	public String toString() {
 		return "UserBaseInfo [id=" + id + ", uid=" + uid + ", realName=" + realName + ", nickName=" + nickName
 				+ ", state=" + state + ", whetherFrozen=" + whetherFrozen + ", whetherDeleted=" + whetherDeleted
-				+ ", gmtCreate=" + gmtCreate + ", gmtModified=" + gmtModified + "]";
+				+ ", whetherInternalTest=" + whetherInternalTest + ", gmtCreate=" + gmtCreate + ", gmtModified="
+				+ gmtModified + "]";
 	}
+
+
+    
     
     
 }

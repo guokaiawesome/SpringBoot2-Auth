@@ -1,6 +1,6 @@
 package com.monster.auth.dao;
 
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.*;
 
 import java.time.LocalDateTime;
 
