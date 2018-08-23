@@ -12,6 +12,7 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 /**
  * 
  * @description 用于统一定义返回给客户端的公共响应结果
+ * 下次重构的时候直接取名ResponseResult，不要加common前缀，后面的两个继承还是一样
  * @author guokai
  * @date 2018年7月8日
  * @version v1.0
@@ -36,6 +37,7 @@ public class CommonResponseResult {
 	
 	/**
 	 * 表明本次请求结果详细信息
+	 * 这个sub_msg每次总是在json最后，不美观，下次可以直接取名为detail
 	 */
 	@JsonProperty("sub_msg")
 	private String subMsg;

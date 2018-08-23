@@ -8,11 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ifaxin.api.constant.RedisKey;
 import com.monster.auth.constant.CodeAndMsgEnum;
 import com.monster.auth.constant.CommonConstant;
 import com.monster.auth.constant.RedisKeyPrefix;
@@ -27,6 +29,11 @@ import com.monster.auth.response.FailureResponseResult;
  * @version v1.0
  */
 public class AccessTokenInterceptor implements HandlerInterceptor{
+	
+	@Autowired
+	StringRedisTemplate stringRedisTemplate;
+	
+	RedisTemplate<String, Object> objectRedisTemplate;
 	
 	//看下这下面post和complete执行方法的先后顺序
 
@@ -65,7 +72,7 @@ public class AccessTokenInterceptor implements HandlerInterceptor{
 		
 		
 		//key的规则：业务线:功能:clientid值:accesstoken值
-		Integer userId=(Integer) redisObjectService.valueOpsGet(RedisKeyPrefix.COMMON_TOKEN_ACCESS.getKey()+accessToken);
+		Integer userId=(Integer)objectRedisTemplate.opsForValue().get(RedisKeyPrefix.COMMON_TOKEN_ACCESS.getKey()+accessToken);
 		if(userId==null) {
 			FailureResponseResult failRet = new FailureResponseResult(CommonConstant.FAILURE,
 					CodeAndMsgEnum.CLIENT_PARAMETER_ERROR.getCode(), CodeAndMsgEnum.CLIENT_PARAMETER_ERROR.getMsg(),
