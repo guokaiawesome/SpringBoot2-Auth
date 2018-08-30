@@ -1,5 +1,6 @@
 # SpringBoot2-Auth
 基于SpringBoot2的认证和授权中心
+主要功能包括基于RBAC的权限管理和OAUTH2相关知识
 
 pojo分层说明：（和阿里java规约有些不一样）
 DTO:  用于前端和后端进行交互的传输对象
